@@ -9,7 +9,7 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         this.cards = new CardLayout();
-        this.parentPanel = new JPanel();
+        this.parentPanel = new JPanel(new GridLayout(3, 1));
 
         setSelf();
     }
@@ -25,7 +25,28 @@ public class MainFrame extends JFrame {
 
     public void setAndAdd() {
         var panel1 = new JPanel();
+        panel1.setLayout(new GridLayout(1, 3));
         panel1.setBackground(Color.black);
+
+        var panel1a = new JPanel();
+        panel1a.setBackground(Color.pink);
+        panel1.add(panel1a);
+
+        var panel1b = new JPanel();
+        panel1b.setBackground(Color.magenta);
+        panel1.add(panel1b);
+
+        var panel1c = new JPanel();
+        panel1c.setBackground(Color.red);
+        panel1c.setLayout(new BoxLayout(panel1c, BoxLayout.Y_AXIS));
+        panel1.add(panel1c);
+
+        var points = new Label("Points:");
+        var pointsNumber = new Label("0");
+
+        panel1c.add(points);
+        panel1c.add(pointsNumber);
+
         parentPanel.add(panel1);
 
         var panel2 = new JPanel();
@@ -35,34 +56,9 @@ public class MainFrame extends JFrame {
         var panel3 = new JPanel();
         panel3.setBackground(Color.darkGray);
         parentPanel.add(panel3);
-
-        var panel4 = new JPanel();
-        panel4.setBackground(Color.magenta);
-        parentPanel.add(panel4);
-
-        var panel5 = new JPanel();
-        panel5.setBackground(Color.BLUE);
-        parentPanel.add(panel5);
-
-        var panel6 = new JPanel();
-        panel6.setBackground(Color.CYAN);
-        parentPanel.add(panel6);
-
-        var panel7 = new JPanel();
-        panel7.setBackground(Color.GREEN);
-        parentPanel.add(panel7);
-
-        var panel8 = new JPanel();
-        panel8.setBackground(Color.LIGHT_GRAY);
-        parentPanel.add(panel8);
-
-        var panel9 = new JPanel();
-        panel9.setBackground(Color.orange);
-        parentPanel.add(panel9);
     }
 
     private void setParent() {
-        parentPanel.setLayout(new GridLayout(3, 3));
         add(parentPanel, "parent");
         cards.show(this.getContentPane(), "parent");
     }
